@@ -1,19 +1,20 @@
 FROM node:18-alpine
+RUN apk add --no-cache openssl
+
 WORKDIR /app
+
+# 1️⃣ Install dependencies
 COPY package*.json ./
 RUN npm ci --omit=dev
 
+# 2️⃣ Copy all source
 COPY . .
 
-# 1️⃣ Build Remix
+# 3️⃣ Build Remix app
 RUN npm run build
 
-# 2️⃣ Prisma
-RUN npx prisma generate
-RUN npx prisma migrate deploy
-
-# 3️⃣ Expose port
+# 4️⃣ Expose port
 EXPOSE 3000
 
-# 4️⃣ Start Remix server (Node adapter)
-CMD ["node", "build/index.js"]
+# 5️⃣ Start Shopify Remix server
+CMD ["node", "build/server/index.js"]
