@@ -1,9 +1,6 @@
-# shopify.app.toml
-# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
-
 client_id = "52829154ee8e87277ca412df5bda5ab2"
 name = "Collection Tree"
-application_url = "https://watsapp-backend-mscv.onrender.com/"
+application_url = "https://shopify-app-2d2n.onrender.com"  # Render auto URL
 embedded = true
 
 [build]
@@ -14,16 +11,15 @@ include_config_on_deploy = true
 api_version = "2025-10"
 
   [[webhooks.subscriptions]]
-  topics = [ "app/uninstalled" ]
+  topics = ["app/uninstalled"]
   uri = "/webhooks/app/uninstalled"
 
   [[webhooks.subscriptions]]
-  topics = [ "app/scopes_update" ]
+  topics = ["app/scopes_update"]
   uri = "/webhooks/app/scopes_update"
 
 [access_scopes]
-# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://watsapp-backend-mscv.onrender.com/api/auth" ]
+redirect_urls = ["https://shopify-app-2d2n.onrender.com/api/auth"]
