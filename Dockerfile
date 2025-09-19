@@ -1,21 +1,19 @@
 FROM node:18-alpine
-RUN apk add --no-cache openssl
-
-EXPOSE 3000
 WORKDIR /app
-ENV NODE_ENV=production
-
-COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev && npm cache clean --force
+COPY package*.json ./
+RUN npm ci --omit=dev
 
 COPY . .
 
-# 1️⃣ Build Remix first
+# 1️⃣ Build Remix
 RUN npm run build
 
-# 2️⃣ Prisma setup
+# 2️⃣ Prisma
 RUN npx prisma generate
 RUN npx prisma migrate deploy
 
-# 3️⃣ Start Remix server (auto-detects build folder)
-CMD ["npx", "remix-serve", "build"]
+# 3️⃣ Expose port
+EXPOSE 3000
+
+# 4️⃣ Start Remix server (Node adapter)
+CMD ["node", "build/index.js"]
