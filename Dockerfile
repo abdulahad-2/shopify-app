@@ -21,3 +21,4 @@ EXPOSE 3000
 
 # Start app (Render sets PORT env var)
 CMD ["npm", "start"]
+

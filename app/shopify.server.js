@@ -17,8 +17,7 @@ const shopify = isDeployed
       apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
       apiVersion: ApiVersion.January25,
       scopes: process.env.SCOPES?.split(","),
-      appUrl: `${process.env.HOST}`, // full URL build karega
-      // use HOST env after first deploy
+      appUrl: `https://${process.env.HOST}`, // only domain from HOST, no slash
       authPathPrefix: "/auth",
       sessionStorage: new PrismaSessionStorage(prisma),
       distribution: AppDistribution.AppStore,
