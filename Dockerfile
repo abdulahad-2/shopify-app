@@ -3,6 +3,14 @@ RUN apk add --no-cache openssl
 
 WORKDIR /app
 
+# 0️⃣ Set Shopify + HOST env vars explicitly for build & runtime
+ENV NODE_ENV=production
+ENV HOST=https://shopify-app-2d2n.onrender.com
+ENV SHOPIFY_API_KEY=<your_api_key>
+ENV SHOPIFY_API_SECRET=<your_api_secret>
+ENV SHOPIFY_ACCESS_TOKEN=<your_access_token>
+ENV SHOPIFY_API_VERSION=2025-07
+
 # 1️⃣ Install all dependencies (dev + prod)
 COPY package*.json ./
 RUN npm ci

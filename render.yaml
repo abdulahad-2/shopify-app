@@ -17,6 +17,8 @@ services:
         value: <your_access_token>
       - key: SHOPIFY_API_VERSION
         value: 2025-07
-      
+      - key: HOST
+        value: https://shopify-app-2d2n.onrender.com
+
     buildCommand: npm run build
     startCommand: node build/server/index.js
