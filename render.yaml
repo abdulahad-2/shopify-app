@@ -9,6 +9,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: HOST
+        value: https://shopify-app-1-x1w5.onrender.com
       - key: SHOPIFY_API_KEY
         value: <your_api_key>
       - key: SHOPIFY_API_SECRET
@@ -17,7 +19,8 @@ services:
         value: <your_access_token>
       - key: SHOPIFY_API_VERSION
         value: 2025-07
-      
+      - key: SCOPES
+        value: write_products,write_collections
 
     buildCommand: npm run build
     startCommand: node build/server/index.js
