@@ -16,8 +16,8 @@ RUN npx prisma generate
 # Build Remix app
 RUN npm run build
 
-# Expose default port (Render will override anyway)
+# Expose default port (Render uses dynamic PORT, not hardcoded)
 EXPOSE 3000
 
-# Start app
+# Start app (Render sets PORT env var)
 CMD ["npm", "start"]
