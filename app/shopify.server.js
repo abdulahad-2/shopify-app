@@ -8,7 +8,8 @@ import { PrismaSessionStorage } from "@shopify/shopify-app-session-storage-prism
 import prisma from "./db.server";
 
 // ✅ Check if app is deployed and HOST is set
-const isDeployed = process.env.HOST && !process.env.HOST.includes("example.com");
+const isDeployed =
+  process.env.HOST && !process.env.HOST.includes("example.com");
 
 const shopify = isDeployed
   ? shopifyApp({
@@ -32,9 +33,13 @@ const shopify = isDeployed
 
 export default shopify;
 export const apiVersion = ApiVersion.January25;
-export const addDocumentResponseHeaders = shopify?.addDocumentResponseHeaders;
-export const authenticate = shopify?.authenticate;
-export const unauthenticated = shopify?.unauthenticated;
-export const login = shopify?.login;
-export const registerWebhooks = shopify?.registerWebhooks;
-export const sessionStorage = shopify?.sessionStorage;
+
+// ✅ Safe fallbacks so Remix doesn’t crash
+export const addDocumentResponseHeaders = shopify
+  ? shopify.addDocumentResponseHeaders
+  : () => {};
+export const authenticate = shopify ? shopify.authenticate : () => {};
+export const unauthenticated = shopify ? shopify.unauthenticated : () => {};
+export const login = shopify ? shopify.login : () => {};
+export const registerWebhooks = shopify ? shopify.registerWebhooks : () => {};
+export const sessionStorage = shopify ? shopify.sessionStorage : {};
