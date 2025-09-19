@@ -1,8 +1,9 @@
+# shopify.app.toml
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "52829154ee8e87277ca412df5bda5ab2"
 name = "Collection Tree"
-application_url = "https://example.com"
+application_url = "https://watsapp-backend-mscv.onrender.com/"
 embedded = true
 
 [build]
@@ -25,4 +26,4 @@ api_version = "2025-10"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://watsapp-backend-mscv.onrender.com/api/auth" ]
